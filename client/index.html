@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1267e5" />
+    <title>구직자용 앱 Mock-up</title>
+    <link rel="stylesheet" href="styless.css" />
+  </head>
+  <body>
+    <main class="preview-shell">
+      <!-- 왼쪽 설명 영역 -->
+      <section class="preview-copy" aria-label="mock-up 안내">
+        <p class="eyebrow">구직자용 앱 MVP</p>
+        <h1>일자리 찾기부터 예약 확정까지</h1>
+        <p>
+          주민등록증 인증, 서류함, 위치 기반 공고, 원터치 지원,
+          내 지원 현황을 모바일 앱 흐름으로 먼저 확인하는 mock-up입니다.
+        </p>
+        <div class="flow-list">
+          <span>1. 인증</span>
+          <span>2. 검색</span>
+          <span>3. 지원</span>
+          <span>4. 예약</span>
+        </div>
+      </section>
+
+      <!-- 폰 프레임 -->
+      <section class="phone" aria-label="구직자 앱 mock-up">
+        <div class="phone-speaker" aria-hidden="true"></div>
+        <div class="app">
+          <!-- 앱 헤더 -->
+          <header class="app-header">
+            <div>
+              <p class="location" id="headerKicker">서울 강남구</p>
+              <h2 id="headerTitle">내 주변 일자리</h2>
+            </div>
+            <div class="header-actions" id="headerActions">
+              <button class="notice-button" onclick="showToast('알림이 없습니다.')">🔔 0</button>
+            </div>
+          </header>
+
+          <!-- 앱 콘텐츠 -->
+          <section class="app-content" id="appContent" aria-live="polite">
+            <!-- 홈 화면 (기본) -->
+            <div id="screen-home" class="stack">
+              <!-- 히어로 카드 -->
+              <div class="hero-card">
+                <p class="eyebrow" style="color:rgba(255,255,255,0.75);margin:0 0 4px">이번 주 추천</p>
+                <h3>강남 카페 홀서빙<br>단기 알바</h3>
+                <p>시급 13,000원 · 주 3일 · 즉시 시작 가능</p>
+                <button class="primary-button" style="width:fit-content;font-size:13px;"
+                  onclick="openApplySheet('강남 카페 홀서빙')">바로 지원하기 →</button>
+              </div>
+
+              <!-- 빠른 메뉴 -->
+              <div class="section-head">
+                <div><h3>빠른 메뉴</h3></div>
+              </div>
+              <div class="quick-grid">
+                <button class="quick-button" onclick="switchTab('search')">
+                  <span>🔍</span>공고 검색
+                </button>
+                <button class="quick-button" onclick="switchTab('status')">
+                  <span>📋</span>지원현황
+                </button>
+                <button class="quick-button" onclick="switchTab('docs')">
+                  <span>📁</span>서류함
+                </button>
+                <button class="quick-button" onclick="switchTab('profile')">
+                  <span>👤</span>내 정보
+                </button>
+              </div>
+
+              <!-- 주변 공고 -->
+              <div class="section-head">
+                <div>
+                  <h3>주변 공고</h3>
+                  <p>강남구 반경 3km</p>
+                </div>
+                <button class="ghost-button" style="font-size:13px;" onclick="switchTab('search')">전체보기</button>
+              </div>
+
+              <div class="job-card">
+                <div class="job-card-body">
+                  <header>
+                    <div>
+                      <h3>편의점 야간 아르바이트</h3>
+                      <div class="job-meta">
+                        <span class="chip">단기</span>
+                        <span class="chip blue">즉시채용</span>
+                        <span class="chip">강남구</span>
+                      </div>
+                    </div>
+                    <button class="tiny-button" onclick="openApplySheet('편의점 야간 아르바이트')">지원</button>
+                  </header>
+                </div>
+                <footer class="job-footer">
+                  <span class="pay">시급 12,500원</span>
+                  <span style="color:var(--muted);font-size:12px;">오후 10시~오전 6시</span>
+                </footer>
+              </div>
+
+              <div class="job-card">
+                <div class="job-card-body">
+                  <header>
+                    <div>
+                      <h3>식당 홀 서빙 (점심)</h3>
+                      <div class="job-meta">
+                        <span class="chip">주 5일</span>
+                        <span class="chip green">신규</span>
+                        <span class="chip">역삼동</span>
+                      </div>
+                    </div>
+                    <button class="tiny-button" onclick="openApplySheet('식당 홀 서빙')">지원</button>
+                  </header>
+                </div>
+                <footer class="job-footer">
+                  <span class="pay">시급 13,000원</span>
+                  <span style="color:var(--muted);font-size:12px;">오전 10시~오후 3시</span>
+                </footer>
+              </div>
+
+              <div class="job-card">
+                <div class="job-card-body">
+                  <header>
+                    <div>
+                      <h3>물류센터 분류 작업</h3>
+                      <div class="job-meta">
+                        <span class="chip">1일</span>
+                        <span class="chip amber">마감임박</span>
+                        <span class="chip">송파구</span>
+                      </div>
+                    </div>
+                    <button class="tiny-button" onclick="openApplySheet('물류센터 분류 작업')">지원</button>
+                  </header>
+                </div>
+                <footer class="job-footer">
+                  <span class="pay">일급 130,000원</span>
+                  <span style="color:var(--muted);font-size:12px;">오전 8시~오후 5시</span>
+                </footer>
+              </div>
+            </div>
+
+            <!-- 검색 화면 -->
+            <div id="screen-search" class="stack" style="display:none;">
+              <div class="search-bar">
+                <span>🔍</span>
+                <input type="text" placeholder="직종, 지역, 업체명 검색" />
+              </div>
+              <div class="filter-row">
+                <button class="active">전체</button>
+                <button>단기·일용</button>
+                <button>주 3일 이상</button>
+                <button>야간</button>
+                <button>즉시채용</button>
+              </div>
+
+              <!-- 지도 카드 -->
+              <div class="map-card" aria-label="주변 일자리 지도">
+                <div class="map-chip pin-a">
+                  카페 홀서빙<small>시급 13,000</small>
+                </div>
+                <div class="map-chip pin-b">
+                  편의점 야간<small>시급 12,500</small>
+                </div>
+                <div class="map-chip pin-c">
+                  식당 서빙<small>시급 13,000</small>
+                </div>
+              </div>
+
+              <div class="job-card">
+                <div class="job-card-body">
+                  <header>
+                    <div>
+                      <h3>강남 카페 홀서빙</h3>
+                      <div class="job-meta">
+                        <span class="chip">단기</span>
+                        <span class="chip blue">즉시채용</span>
+                      </div>
+                    </div>
+                    <button class="tiny-button" onclick="openApplySheet('강남 카페 홀서빙')">지원</button>
+                  </header>
+                </div>
+                <footer class="job-footer">
+                  <span class="pay">시급 13,000원</span>
+                  <span style="color:var(--muted);font-size:12px;">강남구 · 0.8km</span>
+                </footer>
+              </div>
+              <div class="job-card">
+                <div class="job-card-body">
+                  <header>
+                    <div>
+                      <h3>행사 도우미 (주말)</h3>
+                      <div class="job-meta">
+                        <span class="chip">1일</span>
+                        <span class="chip green">신규</span>
+                      </div>
+                    </div>
+                    <button class="tiny-button" onclick="openApplySheet('행사 도우미')">지원</button>
+                  </header>
+                </div>
+                <footer class="job-footer">
+                  <span class="pay">일급 120,000원</span>
+                  <span style="color:var(--muted);font-size:12px;">서초구 · 1.4km</span>
+                </footer>
+              </div>
+            </div>
+
+            <!-- 지원현황 화면 -->
+            <div id="screen-status" class="stack" style="display:none;">
+              <div class="status-grid">
+                <div class="status-card">
+                  <span>📋</span>
+                  <strong>3</strong>
+                  <span>지원 중</span>
+                </div>
+                <div class="status-card">
+                  <span>✅</span>
+                  <strong>1</strong>
+                  <span>확정</span>
+                </div>
+                <div class="status-card">
+                  <span>⏳</span>
+                  <strong>2</strong>
+                  <span>검토 중</span>
+                </div>
+                <div class="status-card">
+                  <span>❌</span>
+                  <strong>0</strong>
+                  <span>미채용</span>
+                </div>
+              </div>
+
+              <div class="application-card">
+                <header>
+                  <div>
+                    <h3 style="margin:0;font-size:15px;">강남 카페 홀서빙</h3>
+                    <p style="margin:3px 0 0;color:var(--muted);font-size:12px;">2026.05.10 지원</p>
+                  </div>
+                  <span class="chip green">확정</span>
+                </header>
+                <div class="timeline">
+                  <div class="timeline-row">
+                    <div class="timeline-dot done"></div>
+                    <span>지원 완료</span>
+                  </div>
+                  <div class="timeline-row">
+                    <div class="timeline-dot done"></div>
+                    <span>서류 검토 완료</span>
+                  </div>
+                  <div class="timeline-row">
+                    <div class="timeline-dot done"></div>
+                    <span>채용 확정 · 05.12(화) 09:00 출근</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="application-card">
+                <header>
+                  <div>
+                    <h3 style="margin:0;font-size:15px;">편의점 야간 아르바이트</h3>
+                    <p style="margin:3px 0 0;color:var(--muted);font-size:12px;">2026.05.11 지원</p>
+                  </div>
+                  <span class="chip amber">검토 중</span>
+                </header>
+                <div class="timeline">
+                  <div class="timeline-row">
+                    <div class="timeline-dot done"></div>
+                    <span>지원 완료</span>
+                  </div>
+                  <div class="timeline-row">
+                    <div class="timeline-dot"></div>
+                    <span>서류 검토 중...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 서류함 화면 -->
+            <div id="screen-docs" class="stack" style="display:none;">
+              <div class="verify-card">
+                <div class="section-head">
+                  <div>
+                    <h3>신원 인증</h3>
+                    <p>주민등록증 기반 본인인증</p>
+                  </div>
+                  <span class="chip green">완료</span>
+                </div>
+                <div class="trust-score">
+                  <span style="font-size:13px;font-weight:800;opacity:.85;">신뢰 점수</span>
+                  <strong>87</strong>
+                  <span style="font-size:13px;opacity:.8;">/ 100</span>
+                </div>
+              </div>
+
+              <div class="section-head">
+                <div>
+                  <h3>내 서류</h3>
+                  <p>제출 완료 3 / 전체 4</p>
+                </div>
+              </div>
+              <div class="doc-progress"><span></span></div>
+
+              <div class="verify-row">
+                <div>
+                  <strong>주민등록증 사본</strong>
+                  <span>2026.04.20 등록</span>
+                </div>
+                <span class="chip green">확인 완료</span>
+              </div>
+              <div class="document-row">
+                <div>
+                  <strong>통장 사본</strong>
+                  <span>2026.04.20 등록</span>
+                </div>
+                <span class="chip green">확인 완료</span>
+              </div>
+              <div class="document-row">
+                <div>
+                  <strong>건강진단서</strong>
+                  <span>2026.05.01 등록</span>
+                </div>
+                <span class="chip">검토 중</span>
+              </div>
+              <div class="document-row">
+                <div>
+                  <strong>고용보험 가입이력</strong>
+                  <span>미등록</span>
+                </div>
+                <button class="tiny-button">업로드</button>
+              </div>
+            </div>
+
+            <!-- 내 정보 화면 -->
+            <div id="screen-profile" class="stack" style="display:none;">
+              <div class="card" style="text-align:center;padding:22px 14px;">
+                <div style="width:64px;height:64px;border-radius:50%;background:var(--blue);color:white;display:grid;place-items:center;font-size:26px;margin:0 auto 10px;">👤</div>
+                <h3 style="margin:0;font-size:18px;">홍길동</h3>
+                <p style="margin:4px 0 0;color:var(--muted);font-size:13px;">hong@example.com</p>
+                <span class="chip green" style="margin-top:10px;">인증 완료</span>
+              </div>
+
+              <div class="section-head">
+                <div><h3>계정 설정</h3></div>
+              </div>
+
+              <div class="profile-row">
+                <div>
+                  <strong>알림 설정</strong>
+                  <span>새 공고 · 지원 현황 알림</span>
+                </div>
+                <span style="color:var(--blue);">›</span>
+              </div>
+              <div class="profile-row">
+                <div>
+                  <strong>희망 근무 조건</strong>
+                  <span>시급 13,000원 이상 · 단기</span>
+                </div>
+                <span style="color:var(--blue);">›</span>
+              </div>
+              <div class="profile-row">
+                <div>
+                  <strong>근무 가능 지역</strong>
+                  <span>서울 강남구, 서초구</span>
+                </div>
+                <span style="color:var(--blue);">›</span>
+              </div>
+              <div class="profile-row">
+                <div>
+                  <strong>로그아웃</strong>
+                  <span></span>
+                </div>
+                <span style="color:var(--red);">›</span>
+              </div>
+            </div>
+
+            <!-- 로그인 화면 (숨김) -->
+            <div id="screen-login" class="stack" style="display:none;">
+              <div class="login-hero">
+                <p class="eyebrow" style="color:rgba(255,255,255,.7);margin:0;">인력사무소</p>
+                <h3>간편하게 시작하세요</h3>
+                <p>주민등록증 인증 한 번으로<br>모든 서비스를 이용할 수 있습니다.</p>
+              </div>
+              <div class="auth-tabs">
+                <button class="active">로그인</button>
+                <button>회원가입</button>
+              </div>
+              <div class="auth-form">
+                <label>
+                  이메일
+                  <input type="email" placeholder="example@email.com" />
+                </label>
+                <label>
+                  비밀번호
+                  <input type="password" placeholder="••••••••" />
+                </label>
+                <button class="primary-button" style="width:100%;margin-top:4px;">로그인</button>
+              </div>
+              <div class="social-grid">
+                <button class="social-button naver">N</button>
+                <button class="social-button kakao">K</button>
+                <button class="social-button google">G</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 탭바 -->
+          <nav class="tabbar" id="tabbar" aria-label="주요 탭">
+            <button class="tab-button active" id="tab-home" onclick="switchTab('home')">
+              <span>🏠</span><span>홈</span>
+            </button>
+            <button class="tab-button" id="tab-search" onclick="switchTab('search')">
+              <span>🔍</span><span>검색</span>
+            </button>
+            <button class="tab-button" id="tab-status" onclick="switchTab('status')">
+              <span>📋</span><span>지원현황</span>
+            </button>
+            <button class="tab-button" id="tab-docs" onclick="switchTab('docs')">
+              <span>📁</span><span>서류함</span>
+            </button>
+            <button class="tab-button" id="tab-profile" onclick="switchTab('profile')">
+              <span>👤</span><span>내 정보</span>
+            </button>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <!-- 지원 바텀시트 -->
+    <dialog class="bottom-sheet" id="applySheet">
+      <form method="dialog" class="sheet-card">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <h2>지원 정보를 확인해 주세요</h2>
+        <div class="apply-summary" id="applySummary">
+          <div class="verify-row">
+            <div>
+              <strong id="applyJobTitle">강남 카페 홀서빙</strong>
+              <span>시급 13,000원 · 단기</span>
+            </div>
+            <span class="chip blue">즉시채용</span>
+          </div>
+          <div class="verify-row">
+            <div>
+              <strong>신원 인증</strong>
+              <span>주민등록증 확인 완료</span>
+            </div>
+            <span class="chip green">완료</span>
+          </div>
+          <div class="verify-row">
+            <div>
+              <strong>서류 제출</strong>
+              <span>통장사본, 주민등록증</span>
+            </div>
+            <span class="chip green">완료</span>
+          </div>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" checked />
+          인력사무소에 내 프로필과 서류 상태가 전달되는 것에 동의합니다.
+        </label>
+        <div class="sheet-actions">
+          <button class="outline-button" value="cancel">취소</button>
+          <button class="primary-button" id="confirmApply" value="default"
+            onclick="handleApply()">지원하기</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 토스트 알림 -->
+    <div class="toast" id="toast" role="status"></div>
+
+    <script>
+      const screens = ['home', 'search', 'status', 'docs', 'profile'];
+      const headerTitles = {
+        home: '내 주변 일자리',
+        search: '공고 검색',
+        status: '지원 현황',
+        docs: '서류함',
+        profile: '내 정보'
+      };
+
+      function switchTab(name) {
+        screens.forEach(s => {
+          document.getElementById('screen-' + s).style.display = (s === name) ? '' : 'none';
+          const btn = document.getElementById('tab-' + s);
+          if (btn) btn.classList.toggle('active', s === name);
+        });
+        document.getElementById('headerTitle').textContent = headerTitles[name] || '';
+        document.getElementById('appContent').scrollTop = 0;
+      }
+
+      function openApplySheet(jobTitle) {
+        document.getElementById('applyJobTitle').textContent = jobTitle;
+        document.getElementById('applySheet').showModal();
+      }
+
+      function handleApply() {
+        document.getElementById('applySheet').close();
+        showToast('지원이 완료되었습니다! 🎉');
+      }
+
+      function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2800);
+      }
+
+      // 필터 버튼 토글
+      document.querySelectorAll('.filter-row button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.filter-row').querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+
+      // auth-tabs 토글
+      document.querySelectorAll('.auth-tabs button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.auth-tabs').querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1267e5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="인력사무소" />
+    <title>구직자용 앱 Mock-up</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="app-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="preview-shell">
+      <section class="preview-copy" aria-label="mock-up 안내">
+        <p class="eyebrow">구직자용 앱 MVP</p>
+        <h1>일자리 찾기부터 예약 확정까지</h1>
+        <p>
+          주민등록증 인증, 서류함, 위치 기반 공고, 원터치 지원, 내 지원 현황을
+          모바일 앱 흐름으로 먼저 확인하는 mock-up입니다.
+        </p>
+        <div class="flow-list">
+          <span>1. 인증</span>
+          <span>2. 검색</span>
+          <span>3. 지원</span>
+          <span>4. 예약</span>
+        </div>
+      </section>
+
+      <section class="phone" aria-label="구직자 앱 mock-up">
+        <div class="phone-speaker" aria-hidden="true"></div>
+        <div class="app">
+          <header class="app-header">
+            <div>
+              <p class="location" id="headerKicker">서울 강남구</p>
+              <h2 id="headerTitle">내 주변 일자리</h2>
+            </div>
+            <div class="header-actions" id="headerActions"></div>
+          </header>
+
+          <section class="app-content" id="appContent" aria-live="polite"></section>
+
+          <nav class="tabbar" id="tabbar" aria-label="주요 탭"></nav>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="bottom-sheet" id="applySheet">
+      <form method="dialog" class="sheet-card">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <h2>지원 정보를 확인해 주세요</h2>
+        <div class="apply-summary" id="applySummary"></div>
+        <label class="check-row">
+          <input type="checkbox" checked />
+          인력사무소에 내 프로필과 서류 상태가 전달되는 것에 동의합니다.
+        </label>
+        <div class="sheet-actions">
+          <button class="outline-button" value="cancel">취소</button>
+          <button class="primary-button" id="confirmApply" value="default">지원하기</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
